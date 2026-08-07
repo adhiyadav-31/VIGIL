@@ -187,7 +187,7 @@
   }
 
   function initNavigation() {
-    $$('[data-page]').forEach(el => {
+    $$('a[data-page], button[data-page]').forEach(el => {
       el.addEventListener('click', (e) => {
         e.preventDefault();
         navigateTo(el.dataset.page);
@@ -568,19 +568,19 @@
   }
 
   function renderReports(reports) {
-    $('#reportsGrid').innerHTML = reports.map(r => `
+    $('#reportsGrid').innerHTML = reports.map(r => {
+      const safeTitle = r.title.replace(/ /g, "_");
+      return `
       <article class="report-card">
         <span class="report-card__icon">${r.icon}</span>
         <h4>${r.title}</h4>
         <p>${r.desc}</p>
         <div class="report-card__actions">
-          <button class="btn btn--ghost" data-export="pdf" data-title="${r.title}">PDF</button>
-          <button class="btn btn--ghost" data-export="xlsx" data-title="${r.title}">Excel</button>
+          <a href="reports/${safeTitle}.pdf" download class="btn btn--ghost">PDF</a>
+          <a href="reports/${safeTitle}.xlsx" download class="btn btn--ghost">Excel</a>
         </div>
-      </article>`).join('');
-    $$('#reportsGrid [data-export]').forEach(btn => {
-      btn.addEventListener('click', () => showToast(`Preparing "${btn.dataset.title}" as ${btn.dataset.export.toUpperCase()}…`));
-    });
+      </article>`;
+    }).join('');
   }
 
   // --- Render Benchmark Intelligence ---
@@ -2010,3 +2010,37 @@ function renderBenchmarkAI() {
 
   document.addEventListener('DOMContentLoaded', init);
 })();
+
+
+
+// --- Vault Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+  const btnUnlock = document.getElementById('btn-unlock-vault');
+  const vaultLocked = document.getElementById('vault-locked');
+  const vaultUnlocked = document.getElementById('vault-unlocked');
+  const vaultPassword = document.getElementById('vault-password');
+
+  if (btnUnlock) {
+    btnUnlock.addEventListener('click', () => {
+      if (vaultPassword.value.trim() === '') {
+        if (typeof showToast === 'function') {
+          showToast('Please enter your Master Password.');
+        } else {
+          alert('Please enter your Master Password.');
+        }
+        return;
+      }
+      
+      if (typeof showToast === 'function') {
+        showToast('Decrypting vault...');
+      }
+      
+      // Simulate decryption delay
+      setTimeout(() => {
+        vaultLocked.style.display = 'none';
+        vaultUnlocked.style.display = 'grid';
+        vaultPassword.value = '';
+      }, 600);
+    });
+  }
+});
