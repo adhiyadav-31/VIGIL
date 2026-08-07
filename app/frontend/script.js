@@ -1983,7 +1983,7 @@ function renderBenchmarkAI() {
 
     renderRecovery(SAMPLE.recovery);
     $('#growthGrid').innerHTML = SAMPLE.growth.map(recoCardHtml).join('');
-    $('#schemesGrid').innerHTML = SAMPLE.schemes.map(recoCardHtml).join('');
+    // $('#schemesGrid').innerHTML = SAMPLE.schemes.map(recoCardHtml).join('');
     renderReports(SAMPLE.reports);
     renderKnowledgeBase();
     if (typeof renderBenchmarkAI === 'function') renderBenchmarkAI();
