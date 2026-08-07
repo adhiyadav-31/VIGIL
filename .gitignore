@@ -1,0 +1,95 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment Variables
+.env
+
+# ==========================
+# IDE
+# ==========================
+.vscode/
+.idea/
+
+# ==========================
+# OS Files
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Python Build
+# ==========================
+build/
+dist/
+*.egg-info/
+
+# ==========================
+# Logs
+# ==========================
+logs/*.log
+logs/*.txt
+
+# ==========================
+# Testing
+# ==========================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ==========================
+# ChromaDB Runtime Files
+# (Generated Automatically)
+# ==========================
+database/chroma_db/*
+!database/chroma_db/.gitkeep
+
+# ==========================
+# Uploaded User Files
+# ==========================
+data/uploads/*
+!data/uploads/.gitkeep
+
+# ==========================
+# Generated ML Models
+# ==========================
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.onnx
+
+# ==========================
+# Temporary Files
+# ==========================
+*.tmp
+*.temp
+
+# ==========================
+# Jupyter
+# ==========================
+.ipynb_checkpoints/
+
+# ==========================
+# Node (if ever added)
+# ==========================
+node_modules/
+
+# ==========================
+# Keep Project Data
+# DO NOT IGNORE THESE
+# ==========================
+!data/documents/**
+!data/datasets/**
+!database/user_data.json
+!database/task_history.json
+!database/conversation_memory.json
