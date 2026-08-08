@@ -398,10 +398,68 @@ async def forget_all_memory():
 
 @router.post("/lease")
 async def request_lease(payload: LeaseRequest):
-    """Process a lease request."""
+    """Process a lease request and send email notification."""
     logger.info("Lease request received for asset: %s", payload.asset_name)
-    # Simulate processing the lease request without sending an email via Mailjet
-    return {"status": "success", "message": "Lease request initiated! Escrow instructions sent."}
+    
+    # 1. Complete the existing business logic first.
+    # (Business logic simulation is already done)
+    
+    # 2 & 3. Automatically send the email using our new service
+    try:
+        from app.services.email_service import get_email_service, EmailConfigurationError
+        email_service = get_email_service()
+        
+        context = {
+            "asset_name": payload.asset_name,
+            "owner_name": "Asset Owner",
+            "requester_name": "VigilAI User"
+        }
+        
+        import io
+        import base64
+        from reportlab.lib.pagesizes import A4
+        from reportlab.pdfgen import canvas
+        
+        # Generate dynamic PDF for the asset
+        buffer = io.BytesIO()
+        c = canvas.Canvas(buffer, pagesize=A4)
+        c.setFont("Helvetica-Bold", 16)
+        c.drawString(50, 800, f"Product Summary: {payload.asset_name}")
+        c.setFont("Helvetica", 12)
+        c.drawString(50, 770, f"Requested Asset: {payload.asset_name}")
+        c.drawString(50, 750, "Lease Request Generated Automatically via VigilAI")
+        c.drawString(50, 730, "Please review the asset conditions and escrow details.")
+        c.save()
+        
+        pdf_bytes = buffer.getvalue()
+        pdf_b64 = base64.b64encode(pdf_bytes).decode('utf-8')
+        
+        attachments = [
+            {
+                "ContentType": "application/pdf",
+                "Filename": f"{payload.asset_name.replace(' ', '_')}_Summary.pdf",
+                "Base64Content": pdf_b64
+            }
+        ]
+
+        success = await email_service.send_template_mail(
+            to_email="adhiyadavg@gmail.com",
+            subject=f"New Lease Request: {payload.asset_name}",
+            template_name="lease_request",
+            context=context,
+            attachments=attachments
+        )
+        
+        # 4, 5 & 6. Handle success vs failure without breaking main feature
+        if success:
+            return {"status": "success", "message": "Email sent successfully."}
+        else:
+            return {"status": "success", "message": "Action completed successfully, but email could not be delivered."}
+            
+    except Exception as e:
+        logger.error("Failed to send email during lease request: %s", e)
+        # Ensure we do not break the main feature or expose secrets
+        return {"status": "success", "message": "Action completed successfully, but email could not be delivered."}
 
 # ===========================================================================
 # SETTINGS — read/update (database/user_data.json)
