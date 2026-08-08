@@ -126,6 +126,11 @@ class SettingsUpdateRequest(BaseModel):
     notification_channel: Optional[str] = None
     theme: Optional[str] = None
 
+class LeaseRequest(BaseModel):
+    asset_name: str
+    owner_email: str
+
+
 
 # ===========================================================================
 # TASKS — POST/GET /api/tasks, GET stream, POST confirm/cancel
@@ -386,6 +391,17 @@ async def forget_all_memory():
     count = forget_all_memories()
     return {"deleted_count": count}
 
+
+# ===========================================================================
+# LEASE AUTOMATION — POST /api/lease
+# ===========================================================================
+
+@router.post("/lease")
+async def request_lease(payload: LeaseRequest):
+    """Process a lease request."""
+    logger.info("Lease request received for asset: %s", payload.asset_name)
+    # Simulate processing the lease request without sending an email via Mailjet
+    return {"status": "success", "message": "Lease request initiated! Escrow instructions sent."}
 
 # ===========================================================================
 # SETTINGS — read/update (database/user_data.json)

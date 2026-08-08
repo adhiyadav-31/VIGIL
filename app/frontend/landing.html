@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VigilAI — Early-Warning Intelligence for MSMEs</title>
+  <meta name="description" content="VigilAI delivers agentic early detection of financial distress, grant opportunities, procurement optimization, and disaster playbooks for MSMEs." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      background-color: var(--bg-app);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Ambient Glow Effects -->
+  <div class="glow-ambient glow-ambient--blue"></div>
+  <div class="glow-ambient glow-ambient--cyan"></div>
+
+  <!-- Sticky Glassmorphic Navigation -->
+  <nav class="landing-nav">
+    <a href="landing.html" class="landing-nav__brand">
+      <svg viewBox="0 0 32 32" width="28" height="28">
+        <polyline points="2,17 9,17 12,7 18,25 21,17 30,17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Vigil<em>AI</em>
+    </a>
+
+    <div class="landing-nav__links">
+      <a href="#features" class="landing-nav__link">Features</a>
+      <a href="#calculator" class="landing-nav__link">ROI Calculator</a>
+      <a href="#how-it-works" class="landing-nav__link">How It Works</a>
+      <a href="#pricing" class="landing-nav__link">Pricing</a>
+      <a href="#faq" class="landing-nav__link">FAQ</a>
+      
+      <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle dark mode" style="padding: 6px;">
+        <svg id="themeIconSun" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <a href="login.html" class="landing-nav__link" style="font-weight:600;">Sign In</a>
+      <a href="login.html" class="btn btn--primary" style="padding: 8px 18px; font-size: 0.9rem;">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-wrapper">
+    <div class="pill-badge">
+      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--green-500);"></span>
+      ✨ Next-Gen MSME Predictive Intelligence
+    </div>
+
+    <h1 class="hero-headline">
+      Predict Cash Crunches.<br />
+      <span class="gradient-text">Protect & Scale Your MSME.</span>
+    </h1>
+
+    <p class="hero-description">
+      VigilAI combines autonomous multi-agent intelligence, sector benchmarking, and GST/banking vault security to give MSME owners an early-warning radar 90 days before cash crunches strike.
+    </p>
+
+    <div class="hero-actions">
+      <a href="login.html" class="btn btn--primary" style="padding: 12px 32px; font-size: 1.05rem;">
+        Start 14-Day Free Trial
+      </a>
+      <a href="index.html" class="btn" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); color: var(--text-primary); padding: 12px 28px; font-size: 1.05rem;">
+        Explore Interactive App
+      </a>
+    </div>
+
+    <!-- Dynamic Dashboard Preview Window -->
+    <div class="preview-window">
+      <div class="preview-window__bar">
+        <div class="preview-window__dots">
+          <span class="preview-dot preview-dot--red"></span>
+          <span class="preview-dot preview-dot--yellow"></span>
+          <span class="preview-dot preview-dot--green"></span>
+        </div>
+        <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-secondary);">vigilai.app/dashboard — Meridian Textiles Pvt Ltd</span>
+        <div style="font-size: 0.75rem; font-weight:600; color: var(--green-500);">● LIVE RADAR ONLINE</div>
+      </div>
+
+      <div class="preview-window__body">
+        <!-- Sidebar Simulation -->
+        <div style="background: var(--bg-surface); border-radius: var(--radius-sm); padding: 16px; border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size:0.75rem; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.05em;">AI Intelligence Hub</div>
+          <div style="background: rgba(61,104,240,0.1); padding: 8px 12px; border-radius: 6px; font-weight: 600; color: var(--blue-500); font-size: 0.85rem; display:flex; align-items:center; gap:8px;">
+            <span>▣</span> Dashboard Overview
+          </div>
+          <div style="padding: 8px 12px; font-size: 0.85rem; color: var(--text-secondary); display:flex; align-items:center; gap:8px;">
+            <span>🏛</span> Grant Hunter <span style="margin-left:auto; background:var(--green-500); color:#fff; font-size:0.65rem; padding:2px 6px; border-radius:10px;">3 New</span>
+          </div>
+          <div style="padding: 8px 12px; font-size: 0.85rem; color: var(--text-secondary); display:flex; align-items:center; gap:8px;">
+            <span>⛟</span> Supplier Radar
+          </div>
+          <div style="padding: 8px 12px; font-size: 0.85rem; color: var(--text-secondary); display:flex; align-items:center; gap:8px;">
+            <span>⚿</span> Financial Vault
+          </div>
+        </div>
+
+        <!-- Main Preview Cards -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <div style="font-size:0.75rem; color:var(--text-secondary);">Distress Index</div>
+              <div style="font-size:1.5rem; font-family:var(--font-mono); font-weight:700; color:var(--green-500); margin-top:4px;">18% (Low Risk)</div>
+            </div>
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <div style="font-size:0.75rem; color:var(--text-secondary);">Cash Runway</div>
+              <div style="font-size:1.5rem; font-family:var(--font-mono); font-weight:700; color:var(--blue-500); margin-top:4px;">142 Days</div>
+            </div>
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <div style="font-size:0.75rem; color:var(--text-secondary);">Unclaimed Grants</div>
+              <div style="font-size:1.5rem; font-family:var(--font-mono); font-weight:700; color:var(--cyan-400); margin-top:4px;">₹3.50 Lakhs</div>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <span style="font-weight:600; font-size:0.9rem;">Automated Agent Recommendation</span>
+              <span style="font-size:0.75rem; color:var(--text-secondary);">2 mins ago</span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5;">
+              "Raw cotton futures are expected to spike by 14% next month due to rain shifts. Switch raw material supplier to <strong>Gujarat Yarns Pvt</strong> to save ₹84,000 per shipment."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Impact & Metrics Section -->
+  <section class="landing-section">
+    <div class="landing-section-header">
+      <h2>Proven Results for Growing MSMEs</h2>
+      <p>Continuous intelligence that translates directly into bottom-line resilience.</p>
+    </div>
+
+    <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <div class="feature-card" style="text-align:center;">
+        <div style="font-size:2.8rem; font-family:var(--font-mono); font-weight:700; color:var(--blue-500);">68%</div>
+        <h3 style="font-size:1.1rem; margin:10px 0 6px;">Cash Crunch Reduction</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary);">Early detection gives owners 90+ days to restructure payables and secure working capital.</p>
+      </div>
+
+      <div class="feature-card" style="text-align:center;">
+        <div style="font-size:2.8rem; font-family:var(--font-mono); font-weight:700; color:var(--green-500);">+34%</div>
+        <h3 style="font-size:1.1rem; margin:10px 0 6px;">Supplier Margin Savings</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary);">Procurement AI identifies alternate regional suppliers with higher reliability and lower shipping costs.</p>
+      </div>
+
+      <div class="feature-card" style="text-align:center;">
+        <div style="font-size:2.8rem; font-family:var(--font-mono); font-weight:700; color:var(--cyan-400);">₹2.4L</div>
+        <h3 style="font-size:1.1rem; margin:10px 0 6px;">Avg. Grant Unlocked</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary);">Automated matching against 450+ State & Central MSME subsidy schemes with auto-filled documentation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Core Features Section -->
+  <section class="landing-section" id="features">
+    <div class="landing-section-header">
+      <h2>Complete Intelligence Suite</h2>
+      <p>Six specialized AI engines working round-the-clock to safeguard your business.</p>
+    </div>
+
+    <div class="feature-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">🏛</div>
+        <h3 style="font-size:1.2rem; margin-bottom:8px;">Grant & Subsidy Hunter</h3>
+        <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.5;">
+          Auto-matches your business profile against government subsidy schemes (CLCSS, ZED Certification, PMEGP). Pre-populates application forms instantly.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">⚿</div>
+        <h3 style="font-size:1.2rem; margin-bottom:8px;">Encrypted Financial Vault</h3>
+        <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.5;">
+          AES-256 client-side encryption for Balance Sheets, GST Returns, and Bank Statements. Accessible only via owner master key.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">★</div>
+        <h3 style="font-size:1.2rem; margin-bottom:8px;">Review & Sentiment Intelligence</h3>
+        <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.5;">
+          Scrapes and synthesizes customer reviews across Amazon, Flipkart, and Google Reviews to surface product defect trends and competitor weak spots.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-card">
+        <div class="feature-icon">⛟</div>
+        <h3 style="font-size:1.2rem; margin-bottom:8px;">Procurement AI & Supplier Radar</h3>
+        <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.5;">
+          Predicts raw material price volatility and ranks regional vendors by price, lead time, and quality score.
+        </p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="feature-card">
+        <div class="feature-icon">⚑</div>
+        <h3 style="font-size:1.2rem; margin-bottom:8px;">Success Blueprint Engine</h3>
+        <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.5;">
+          Extracts growth strategies and operational benchmarks anonymized from 12,400+ top-performing MSMEs in your exact sector.
+        </p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="feature-card">
+        <div class="feature-icon">⚠</div>
+        <h3 style="font-size:1.2rem; margin-bottom:8px;">Disaster Planner & Stress Test</h3>
+        <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.5;">
+          Run black-swan stress tests (supply chain halt, customer default, inflation spike) and get instant step-by-step contingency playbooks.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive MSME ROI & Savings Calculator Section -->
+  <section class="landing-section" id="calculator">
+    <div class="landing-section-header">
+      <h2>Calculate Your Estimated MSME Impact</h2>
+      <p>Adjust your business metrics to see potential annual savings and grant opportunities unlocked by VigilAI.</p>
+    </div>
+
+    <div class="calculator-card">
+      <div>
+        <div class="calc-range-wrap">
+          <label>
+            <span>Monthly Revenue Turnover</span>
+            <span id="calcRevenueVal" style="color:var(--blue-500); font-family:var(--font-mono);">₹25,00,000</span>
+          </label>
+          <input type="range" id="calcRevenueRange" min="500000" max="20000000" step="500000" value="2500000" />
+        </div>
+
+        <div class="calc-range-wrap">
+          <label>
+            <span>Industry Sector</span>
+          </label>
+          <select id="calcSectorSelect" style="width:100%; padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle); background:var(--bg-surface); color:var(--text-primary); font-weight:500;">
+            <option value="textiles">Textiles & Garments</option>
+            <option value="manufacturing">Auto Ancillary & Precision Eng.</option>
+            <option value="food">Food Processing & Pharma</option>
+            <option value="retail">Retail & Wholesale Trading</option>
+          </select>
+        </div>
+
+        <div class="calc-range-wrap" style="margin-bottom:0;">
+          <label>
+            <span>Monthly Procurement Expense</span>
+            <span id="calcProcurementVal" style="color:var(--blue-500); font-family:var(--font-mono);">₹12,50,000</span>
+          </label>
+          <input type="range" id="calcProcurementRange" min="200000" max="15000000" step="250000" value="1250000" />
+        </div>
+      </div>
+
+      <div class="calc-results-box">
+        <div style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; opacity:0.8;">Estimated Annual Profit Increase</div>
+        <div class="calc-result-number" id="calcEstSavings">₹ 3.42 Lakhs</div>
+        <p style="font-size:0.85rem; opacity:0.85; margin-bottom:16px;">Based on procurement optimization & eligible subsidy discovery.</p>
+
+        <div style="display:flex; justify-content:space-around; border-top:1px solid rgba(255,255,255,0.15); padding-top:16px; font-size:0.85rem;">
+          <div>
+            <div style="opacity:0.7;">Procurement Saved</div>
+            <div style="font-family:var(--font-mono); font-weight:700; color:var(--cyan-300);" id="calcProcSaved">₹1.80L</div>
+          </div>
+          <div>
+            <div style="opacity:0.7;">Grant Potential</div>
+            <div style="font-family:var(--font-mono); font-weight:700; color:var(--green-500);" id="calcGrantPotential">₹1.62L</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="landing-section" id="how-it-works">
+    <div class="landing-section-header">
+      <h2>How VigilAI Operates in 3 Simple Steps</h2>
+      <p>Seamless setup with zero technical complexity for business owners.</p>
+    </div>
+
+    <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <div class="feature-card" style="position:relative;">
+        <div style="font-size:0.8rem; font-family:var(--font-mono); font-weight:700; color:var(--blue-500); text-transform:uppercase; margin-bottom:12px;">STEP 01</div>
+        <h3 style="font-size:1.15rem; margin-bottom:8px;">Secure Vault Sync</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.5;">
+          Upload your latest GST returns or financial statements into your encrypted local vault. Your raw financial data never leaves your control.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div style="font-size:0.8rem; font-family:var(--font-mono); font-weight:700; color:var(--blue-500); text-transform:uppercase; margin-bottom:12px;">STEP 02</div>
+        <h3 style="font-size:1.15rem; margin-bottom:8px;">Multi-Agent Diagnosis</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.5;">
+          Our Risk, Automation, and Research agents benchmark your operational cash flow against sector averages to identify vulnerabilities.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div style="font-size:0.8rem; font-family:var(--font-mono); font-weight:700; color:var(--blue-500); text-transform:uppercase; margin-bottom:12px;">STEP 03</div>
+        <h3 style="font-size:1.15rem; margin-bottom:8px;">Execute & Scale</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.5;">
+          Apply 1-click recommendations: apply for grants, switch suppliers, or run contingency playbooks to protect your margins.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ Accordion Section -->
+  <section class="landing-section" id="faq">
+    <div class="landing-section-header">
+      <h2>Frequently Asked Questions</h2>
+      <p>Have questions? We have answers.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary class="faq-question">How does VigilAI protect my sensitive business financial data?</summary>
+        <div class="faq-answer">
+          All financial documents (balance sheets, GST returns, P&L statements) are encrypted on your browser using AES-256 before storage in the Secure Vault. Only your master key can decrypt them.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">How early can VigilAI predict financial distress or cash crunches?</summary>
+        <div class="faq-answer">
+          Our risk models analyze cash runway, working capital cycle, receivable turnover, and supplier price trends to alert you up to 90 days in advance.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">How does the Grant & Subsidy Hunter auto-match schemes?</summary>
+        <div class="faq-answer">
+          Our Research Agent scans 450+ State and Central Government portals daily. It matches your sector, investment in plant & machinery, and location to surface high-probability grants and subsidies.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Can I try VigilAI before subscribing?</summary>
+        <div class="faq-answer">
+          Yes! We offer a 14-day free trial with full access to the Pro Growth plan features without requiring credit card details upfront.
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:var(--bg-surface); border-top:1px solid var(--border-subtle); padding:4rem 1.5rem 2rem; margin-top:4rem;">
+    <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns: 2fr repeat(3, 1fr); gap:40px;">
+      <div>
+        <a href="landing.html" class="landing-nav__brand" style="margin-bottom:12px;">
+          <svg viewBox="0 0 32 32" width="24" height="24">
+            <polyline points="2,17 9,17 12,7 18,25 21,17 30,17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Vigil<em>AI</em>
+        </a>
+        <p style="font-size:0.9rem; color:var(--text-secondary); max-width:320px; line-height:1.5;">
+          Enterprise-grade artificial intelligence and predictive early-warning analytics engineered specifically for modern MSMEs.
+        </p>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.95rem; margin-bottom:14px; font-weight:700;">Platform</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:0.88rem; color:var(--text-secondary);">
+          <li><a href="#features">Features Overview</a></li>
+          <li><a href="#calculator">ROI Calculator</a></li>
+          <li><a href="index.html">Interactive App</a></li>
+          <li><a href="#pricing">Pricing Plans</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.95rem; margin-bottom:14px; font-weight:700;">Resources</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:0.88rem; color:var(--text-secondary);">
+          <li><a href="#">MSME Grant Directory</a></li>
+          <li><a href="#">Disaster Playbooks</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">API Access</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.95rem; margin-bottom:14px; font-weight:700;">Legal & Security</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:0.88rem; color:var(--text-secondary);">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">AES-256 Vault Guarantee</a></li>
+          <li><a href="#">Contact Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="max-width:1200px; margin:3rem auto 0; padding-top:2rem; border-top:1px solid var(--border-subtle); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; color:var(--text-secondary); flex-wrap:wrap; gap:16px;">
+      <div>&copy; 2026 VigilAI Inc. All rights reserved.</div>
+      <div>Designed for Indian MSMEs & Growth Businesses</div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript for Calculator, Billing Toggle, and Theme Toggle -->
+  <script>
+    // Theme Management
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      localStorage.setItem('vigilai_theme', theme);
+    }
+
+    const savedTheme = localStorage.getItem('vigilai_theme') || 'light';
+    applyTheme(savedTheme);
+
+    themeBtn.addEventListener('click', () => {
+      const current = htmlEl.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+
+    // MSME Savings Calculator Logic
+    const revRange = document.getElementById('calcRevenueRange');
+    const procRange = document.getElementById('calcProcurementRange');
+    const revVal = document.getElementById('calcRevenueVal');
+    const procVal = document.getElementById('calcProcurementVal');
+    const sectorSelect = document.getElementById('calcSectorSelect');
+
+    const estSavingsEl = document.getElementById('calcEstSavings');
+    const procSavedEl = document.getElementById('calcProcSaved');
+    const grantPotentialEl = document.getElementById('calcGrantPotential');
+
+    function formatINR(val) {
+      if (val >= 10000000) {
+        return '₹' + (val / 10000000).toFixed(2) + ' Cr';
+      } else if (val >= 100000) {
+        return '₹' + (val / 100000).toFixed(2) + ' Lakhs';
+      }
+      return '₹' + val.toLocaleString('en-IN');
+    }
+
+    function calculateImpact() {
+      const rev = parseFloat(revRange.value);
+      const proc = parseFloat(procRange.value);
+      
+      revVal.textContent = formatINR(rev);
+      procVal.textContent = formatINR(proc);
+
+      // Calculations: 12% procurement optimization + sector-based grant calculation
+      const procSavings = proc * 12 * 0.12;
+      const sectorMultipliers = { textiles: 0.08, manufacturing: 0.10, food: 0.07, retail: 0.04 };
+      const sectorMult = sectorMultipliers[sectorSelect.value] || 0.07;
+      const grantPot = Math.min(rev * sectorMult, 500000);
+
+      const totalSavings = procSavings + grantPot;
+
+      estSavingsEl.textContent = formatINR(totalSavings);
+      procSavedEl.textContent = formatINR(procSavings);
+      grantPotentialEl.textContent = formatINR(grantPot);
+    }
+
+    revRange.addEventListener('input', calculateImpact);
+    procRange.addEventListener('input', calculateImpact);
+    sectorSelect.addEventListener('change', calculateImpact);
+    calculateImpact();
+
+    // Billing Toggle Switch
+    const billingToggle = document.getElementById('billingToggle');
+    const priceStarter = document.getElementById('planPriceStarter');
+    const pricePro = document.getElementById('planPricePro');
+
+    billingToggle.addEventListener('change', () => {
+      if (billingToggle.checked) {
+        priceStarter.innerHTML = '₹ 1,199<span>/mo (billed annually)</span>';
+        pricePro.innerHTML = '₹ 3,199<span>/mo (billed annually)</span>';
+      } else {
+        priceStarter.innerHTML = '₹ 1,499<span>/mo</span>';
+        pricePro.innerHTML = '₹ 3,999<span>/mo</span>';
+      }
+    });
+  </script>
+</body>
+</html>

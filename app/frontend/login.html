@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In & Register — VigilAI</title>
+  <meta name="description" content="Sign in or register for VigilAI early-warning business intelligence dashboard." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      background-color: var(--bg-app);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body class="auth-page">
+
+  <!-- Ambient Glow Background -->
+  <div class="glow-ambient glow-ambient--blue"></div>
+  <div class="glow-ambient glow-ambient--cyan"></div>
+
+  <!-- Theme Toggle Top Right -->
+  <div style="position: absolute; top: 20px; right: 20px; z-index: 100;">
+    <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle dark mode" style="padding: 8px; background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:50%;">
+      <svg id="themeIconSun" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <div class="auth-card-container">
+    <div class="auth-header">
+      <a href="landing.html" class="landing-nav__brand" style="justify-content: center; text-decoration: none;">
+        <svg viewBox="0 0 32 32" width="32" height="32">
+          <polyline points="2,17 9,17 12,7 18,25 21,17 30,17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Vigil<em>AI</em>
+      </a>
+      <h1 id="authTitle">Welcome Back</h1>
+      <p style="font-size: 0.9rem; color: var(--text-secondary);" id="authSubtitle">Sign in to monitor your MSME health and cash runway.</p>
+    </div>
+
+    <!-- Mode Selector Tabs -->
+    <div class="auth-tabs">
+      <button type="button" class="auth-tab-btn is-active" id="tabSignIn">Sign In</button>
+      <button type="button" class="auth-tab-btn" id="tabSignUp">Create Account</button>
+    </div>
+
+    <!-- Auth Form -->
+    <form id="authForm" onsubmit="return false;">
+      <!-- Full Name (Sign Up only) -->
+      <div class="form-field" id="fieldFullName" style="display: none;">
+        <label for="fullName">Full Name / Company Representative</label>
+        <input type="text" id="fullName" placeholder="e.g. Rehaa" />
+      </div>
+
+      <!-- Sector (Sign Up only) -->
+      <div class="form-field" id="fieldSector" style="display: none;">
+        <label for="companySector">Business Sector</label>
+        <select id="companySector" style="width: 100%; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: var(--bg-surface); color: var(--text-primary);">
+          <option value="textiles">Textiles & Garments</option>
+          <option value="auto">Auto Ancillary & Precision Eng.</option>
+          <option value="food">Food Processing & Pharma</option>
+          <option value="retail">Retail & Wholesale Trading</option>
+        </select>
+      </div>
+
+      <!-- Email -->
+      <div class="form-field">
+        <label for="email">Work Email</label>
+        <input type="email" id="email" placeholder="rhea@meridiantextiles.in" value="rhea@meridiantextiles.in" />
+      </div>
+
+      <!-- Password -->
+      <div class="form-field" style="position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <label for="password" style="margin-bottom: 0;">Password</label>
+          <button type="button" id="togglePasswordBtn" style="font-size: 0.8rem; color: var(--blue-500); font-weight: 500; border: none; background: none; cursor: pointer;">Show</button>
+        </div>
+        <input type="password" id="password" placeholder="••••••••" value="password123" />
+        
+        <!-- Password Strength Meter (Sign Up only) -->
+        <div id="strengthWrap" style="display: none;">
+          <div class="password-strength-bar">
+            <div class="password-strength-fill" id="strengthFill"></div>
+          </div>
+          <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px;" id="strengthText">Password Strength: Weak</div>
+        </div>
+      </div>
+
+      <!-- Options / Remember Me -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin: 16px 0 24px; font-size: 0.85rem;" id="rememberRow">
+        <label style="display: flex; align-items: center; gap: 8px; color: var(--text-secondary); cursor: pointer;">
+          <input type="checkbox" id="rememberMe" checked style="accent-color: var(--blue-500);" />
+          Remember me for 30 days
+        </label>
+        <a href="#" id="forgotPasswordLink" style="color: var(--blue-500); font-weight: 500;">Forgot?</a>
+      </div>
+
+      <button type="button" class="btn btn--primary btn--full" id="submitBtn" style="padding: 12px; font-size: 1rem; cursor: pointer;">
+        Sign In to Dashboard
+      </button>
+    </form>
+
+    <!-- Social Divider -->
+    <div style="display: flex; align-items: center; margin: 24px 0; color: var(--text-secondary); font-size: 0.85rem;">
+      <div style="flex: 1; border-bottom: 1px solid var(--border-subtle);"></div>
+      <span style="padding: 0 12px;">or continue with</span>
+      <div style="flex: 1; border-bottom: 1px solid var(--border-subtle);"></div>
+    </div>
+
+    <!-- Google Button -->
+    <button type="button" class="btn btn--full" id="googleLoginBtn" style="background: var(--bg-surface-2); border: 1px solid var(--border-subtle); color: var(--text-primary); display: flex; align-items: center; justify-content: center; gap: 10px; padding: 10px;">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      Google Workspace
+    </button>
+
+    <!-- Quick Demo Accounts -->
+    <div class="quick-demo-box">
+      <p>⚡ Quick Demo Auto-Fill</p>
+      <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+        <button type="button" class="quick-demo-btn" id="demoMeridianBtn">Meridian Textiles</button>
+        <button type="button" class="quick-demo-btn" id="demoApexBtn">Apex Components</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme Switcher
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      localStorage.setItem('vigilai_theme', theme);
+    }
+    const savedTheme = localStorage.getItem('vigilai_theme') || 'light';
+    applyTheme(savedTheme);
+
+    themeBtn.addEventListener('click', () => {
+      const next = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+
+    // Mode Switching (Sign In vs Sign Up)
+    let isSignUp = false;
+    const tabSignIn = document.getElementById('tabSignIn');
+    const tabSignUp = document.getElementById('tabSignUp');
+    const authTitle = document.getElementById('authTitle');
+    const authSubtitle = document.getElementById('authSubtitle');
+    const fieldFullName = document.getElementById('fieldFullName');
+    const fieldSector = document.getElementById('fieldSector');
+    const strengthWrap = document.getElementById('strengthWrap');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function setMode(signUpMode) {
+      isSignUp = signUpMode;
+      if (isSignUp) {
+        tabSignIn.classList.remove('is-active');
+        tabSignUp.classList.add('is-active');
+        authTitle.textContent = 'Create MSME Account';
+        authSubtitle.textContent = 'Get instant 14-day full access to early warning AI.';
+        fieldFullName.style.display = 'block';
+        fieldSector.style.display = 'block';
+        strengthWrap.style.display = 'block';
+        submitBtn.textContent = 'Create Account & Launch';
+      } else {
+        tabSignUp.classList.remove('is-active');
+        tabSignIn.classList.add('is-active');
+        authTitle.textContent = 'Welcome Back';
+        authSubtitle.textContent = 'Sign in to monitor your MSME health and cash runway.';
+        fieldFullName.style.display = 'none';
+        fieldSector.style.display = 'none';
+        strengthWrap.style.display = 'none';
+        submitBtn.textContent = 'Sign In to Dashboard';
+      }
+    }
+
+    tabSignIn.addEventListener('click', () => setMode(false));
+    tabSignUp.addEventListener('click', () => setMode(true));
+
+    // Show/Hide Password Toggle
+    const passInput = document.getElementById('password');
+    const togglePassBtn = document.getElementById('togglePasswordBtn');
+
+    togglePassBtn.addEventListener('click', () => {
+      if (passInput.type === 'password') {
+        passInput.type = 'text';
+        togglePassBtn.textContent = 'Hide';
+      } else {
+        passInput.type = 'password';
+        togglePassBtn.textContent = 'Show';
+      }
+    });
+
+    // Password Strength Meter
+    const strengthFill = document.getElementById('strengthFill');
+    const strengthText = document.getElementById('strengthText');
+
+    passInput.addEventListener('input', () => {
+      if (!isSignUp) return;
+      const val = passInput.value;
+      let score = 0;
+      if (val.length >= 6) score++;
+      if (val.length >= 10) score++;
+      if (/[A-Z]/.test(val) && /[0-9]/.test(val)) score++;
+
+      if (score <= 1) {
+        strengthFill.style.width = '33%';
+        strengthFill.style.backgroundColor = 'var(--red-500)';
+        strengthText.textContent = 'Password Strength: Weak';
+      } else if (score === 2) {
+        strengthFill.style.width = '66%';
+        strengthFill.style.backgroundColor = 'var(--orange-500)';
+        strengthText.textContent = 'Password Strength: Good';
+      } else {
+        strengthFill.style.width = '100%';
+        strengthFill.style.backgroundColor = 'var(--green-500)';
+        strengthText.textContent = 'Password Strength: Strong';
+      }
+    });
+
+    // Main Auth Execution (Instant Redirect & LocalStorage update)
+    function executeAuth(customCompany, customEmail) {
+      const emailInput = document.getElementById('email').value.trim();
+      const nameInput = document.getElementById('fullName').value.trim();
+      const sectorInput = document.getElementById('companySector').value;
+
+      let email = customEmail || emailInput || 'owner@msme.in';
+      let fullName = nameInput || (isSignUp ? 'New User' : 'Rhea Malhotra');
+      let company = customCompany || (isSignUp ? (nameInput ? `${nameInput} Enterprises` : 'Rehaa MSME Pvt. Ltd.') : 'Meridian Textiles Pvt. Ltd.');
+
+      submitBtn.textContent = 'Redirecting to Dashboard...';
+      submitBtn.style.opacity = '0.9';
+
+      try {
+        localStorage.setItem('vigilai_user', JSON.stringify({
+          email: email,
+          fullName: fullName,
+          company: company,
+          sector: sectorInput,
+          loggedInAt: new Date().toISOString()
+        }));
+      } catch (e) {
+        console.error('LocalStorage write error:', e);
+      }
+
+      // Direct location change
+      window.location.href = 'index.html';
+    }
+
+    // Event Listeners
+    submitBtn.addEventListener('click', () => executeAuth());
+    document.getElementById('authForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      executeAuth();
+    });
+
+    // Demo Auto-Fill Handlers
+    document.getElementById('demoMeridianBtn').addEventListener('click', () => {
+      setMode(false);
+      document.getElementById('email').value = 'rhea@meridiantextiles.in';
+      document.getElementById('password').value = 'password123';
+      executeAuth('Meridian Textiles Pvt. Ltd.', 'rhea@meridiantextiles.in');
+    });
+
+    document.getElementById('demoApexBtn').addEventListener('click', () => {
+      setMode(false);
+      document.getElementById('email').value = 'apex@components.in';
+      document.getElementById('password').value = 'password123';
+      executeAuth('Apex Components Ltd.', 'apex@components.in');
+    });
+
+    document.getElementById('googleLoginBtn').addEventListener('click', () => {
+      executeAuth('Google Auth MSME', 'user@gmail.com');
+    });
+
+    document.getElementById('forgotPasswordLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Password reset instructions have been sent to your email.');
+    });
+  </script>
+</body>
+</html>
