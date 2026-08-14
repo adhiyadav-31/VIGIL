@@ -462,6 +462,57 @@ async def request_lease(payload: LeaseRequest):
         return {"status": "success", "message": "Action completed successfully, but email could not be delivered."}
 
 # ===========================================================================
+# PROCUREMENT — GET /api/procurement/draft-po
+# ===========================================================================
+from fastapi.responses import Response
+import io
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+import datetime
+
+@router.get("/procurement/draft-po")
+async def download_draft_po():
+    """Generates and downloads a Draft Purchase Order PDF for Cotton Yarn."""
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=A4)
+    
+    # Header
+    c.setFont("Helvetica-Bold", 20)
+    c.drawString(50, 800, "PURCHASE ORDER (DRAFT)")
+    
+    c.setFont("Helvetica", 12)
+    c.drawString(50, 770, f"Date: {datetime.datetime.now().strftime('%Y-%m-%d')}")
+    c.drawString(50, 750, "PO Number: PO-CY-9021")
+    
+    # Supplier details
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(50, 710, "Supplier Details:")
+    c.setFont("Helvetica", 12)
+    c.drawString(50, 690, "Vendor: Rajesh Textiles")
+    c.drawString(50, 670, "Supplier ID: SUP-0042")
+    c.drawString(50, 650, "Status: Approved Cost Leader")
+    
+    # Order Details
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(50, 610, "Order Details:")
+    c.setFont("Helvetica", 12)
+    c.drawString(50, 590, "Item: Cotton Yarn")
+    c.drawString(50, 570, "Quantity: 1,000 kg (Strategic Stockpile)")
+    c.drawString(50, 550, "Predicted Unit Price: 245 INR/kg")
+    c.drawString(50, 530, "Total Est. Value: 2,45,000 INR")
+    
+    # Justification
+    c.setFont("Helvetica-Oblique", 10)
+    c.drawString(50, 490, "Note: Auto-drafted based on VigilAI prediction to avoid 12% price hike next quarter.")
+    
+    c.save()
+    pdf_bytes = buffer.getvalue()
+    
+    return Response(content=pdf_bytes, media_type="application/pdf", headers={
+        "Content-Disposition": "attachment; filename=Draft_PO_Cotton_Yarn.pdf"
+    })
+
+# ===========================================================================
 # SETTINGS — read/update (database/user_data.json)
 # ===========================================================================
 

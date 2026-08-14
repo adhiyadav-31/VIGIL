@@ -2170,3 +2170,61 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Error hydrating user profile:', err);
   }
 });
+
+// --- Settings Feedback Form Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+  const btnSaveFeedback = document.getElementById('btn-save-feedback');
+  const feedbackInput = document.getElementById('feedback-input');
+  const savedFeedbackList = document.getElementById('saved-feedback-list');
+
+  if (!btnSaveFeedback || !feedbackInput || !savedFeedbackList) return;
+
+  function loadFeedback() {
+    const raw = localStorage.getItem('vigilai_feedback') || '[]';
+    let records = [];
+    try { records = JSON.parse(raw); } catch (e) {}
+    
+    savedFeedbackList.innerHTML = '';
+    if (records.length === 0) {
+      savedFeedbackList.innerHTML = '<li style="color: var(--text-secondary); font-size: 0.9rem;">No feedback saved yet.</li>';
+      return;
+    }
+
+    records.forEach(r => {
+      const li = document.createElement('li');
+      li.style.padding = '8px';
+      li.style.background = 'var(--bg-surface-2)';
+      li.style.borderRadius = '6px';
+      li.style.fontSize = '0.9rem';
+      li.style.border = '1px solid var(--border-subtle)';
+      li.innerHTML = `<strong>${new Date(r.timestamp).toLocaleDateString()}</strong>: <br><span style="color: var(--text-secondary);">${r.text}</span>`;
+      savedFeedbackList.appendChild(li);
+    });
+  }
+
+  loadFeedback();
+
+  btnSaveFeedback.addEventListener('click', () => {
+    const text = feedbackInput.value.trim();
+    if (!text) {
+      if (typeof showToast === 'function') showToast('Please enter some feedback first.');
+      return;
+    }
+    
+    const raw = localStorage.getItem('vigilai_feedback') || '[]';
+    let records = [];
+    try { records = JSON.parse(raw); } catch (e) {}
+    
+    records.unshift({
+      text: text,
+      timestamp: Date.now()
+    });
+    
+    localStorage.setItem('vigilai_feedback', JSON.stringify(records));
+    feedbackInput.value = '';
+    
+    if (typeof showToast === 'function') showToast('Feedback saved successfully!');
+    loadFeedback();
+  });
+});
+
