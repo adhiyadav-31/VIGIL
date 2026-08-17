@@ -24,7 +24,7 @@ import unittest
 from unittest import mock
 from unittest.mock import MagicMock
 
-from app.agents import analysis_agent, automation_agent, manager_agent, memory_agent, planner_agent, research_agent
+from backend.agents import analysis_agent, automation_agent, manager_agent, memory_agent, planner_agent, research_agent
 
 # --------------------------------------------------------------------------------
 # Stub out cross-package dependencies BEFORE importing anything under agents/.
@@ -93,7 +93,7 @@ if _APP_DIR not in sys.path: sys.path.insert(0, _APP_DIR)
 
 _install_stub_modules()
 
-from app.agents import (  # noqa: E402  (import after stubbing, intentional)
+from backend.agents import (  # noqa: E402  (import after stubbing, intentional)
     decision_agent,
 )
 

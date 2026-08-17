@@ -223,5 +223,20 @@
     "status": "submitted",
     "business_id": "default",
     "timestamp": "2026-08-08T08:44:33.268270"
+  },
+  {
+    "sales": 20000.0,
+    "complaints": 0,
+    "delays": "1 supplier",
+    "inventory": "Damaged goods",
+    "attendance": 95.0,
+    "expenses": 2000.0,
+    "competitors": "No",
+    "marketchange": "",
+    "feedback": "",
+    "notes": "",
+    "status": "submitted",
+    "business_id": "default",
+    "timestamp": "2026-08-15T16:33:25.169614"
   }
 ]
