@@ -2,8 +2,8 @@ import os
 import openpyxl
 from fpdf import FPDF
 
-# The server is running from TKR_404-main, so downloads should be in app/frontend/downloads or just root.
-# The server is serving from app/frontend perhaps, let's put it in app/frontend/reports
+# The server is running from TKR_404-main, so downloads should be in frontend/downloads or just root.
+# The server is serving from backend/frontend perhaps, let's put it in frontend/reports
 out_dir = r"c:\Users\GUDA ADHI YADAV\Downloads\TKR_404-main\app\frontend\reports"
 os.makedirs(out_dir, exist_ok=True)
 
